@@ -2,13 +2,17 @@ from random import randint
 from brain_games.cli import welcome_user
 
 
-def get_user_answer(number):
+def play_round():
+    number = randint(1, 100)
     print(f'Question: {number}')
-    return input('Your answer: ')
-
-
-def is_answer_correct(number, user_answer):
-    return 'yes' if number % 2 == 0 else 'no' == user_answer
+    user_answer = input('Your answer: ')
+    correct_answer = 'yes' if number % 2 == 0 else 'no'
+    if user_answer == correct_answer:
+        print('Correct!')
+        return True
+    else:
+        print(f"'{user_answer}' is wrong answer ;(. Correct answer was '{correct_answer}'.")
+        return False
 
 
 def main():
@@ -17,18 +21,14 @@ def main():
 
     correct_answers_count = 0
     while correct_answers_count < 3:
-        number = randint(1, 100)
-        user_answer = get_user_answer(number)
-        if is_answer_correct(number, user_answer):
-            print('Correct!')
+        if play_round():
             correct_answers_count += 1
         else:
-            correct_answer = 'yes' if number % 2 == 0 else 'no'
-            print(f"'{user_answer}' is wrong answer ;(. Correct answer was '{correct_answer}'.")
             print(f"Let's try again, {name}!")
-            return
+            break
 
-    print(f'Congratulations, {name}!')
+    if correct_answers_count == 3:
+        print(f'Congratulations, {name}!')
 
 if __name__ == '__main__':
     main()
