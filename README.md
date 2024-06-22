@@ -1,3 +1,5 @@
+# # Asciinema brain-calc demo
+[![asciicast](https://asciinema.org/a/665062.svg)](https://asciinema.org/a/665062)
 # Asciinema brain-even demo
 [![asciicast](https://asciinema.org/a/664964.svg)](https://asciinema.org/a/664964)
 # Maintainability badge:
