@@ -1,19 +1,6 @@
 import random
 
 
-def generate_number():
-    return random.randint(1, 100)
-
-
-def is_even(number):
-    return number % 2 == 0
-
-
-def calculate(expression):
-    # Remember to be cautious with eval!
-    return eval(expression)
-
-
 def run_game(game_name, game_description, generate_question, correct_answer_function):
     print(game_name)
     print(game_description)
@@ -34,6 +21,7 @@ def run_game(game_name, game_description, generate_question, correct_answer_func
         else:
             print(f"'{user_answer}' is the wrong answer ;(. The correct answer was '{correct_answer}'.")
             print(f"Let's try again, {name}!")
+
             break
 
     if correct_answers_count == correct_answers_needed:
