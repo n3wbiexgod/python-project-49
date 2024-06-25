@@ -1,3 +1,5 @@
+# Asciinema brain-prime demo
+[![asciicast](https://asciinema.org/a/665503.svg)](https://asciinema.org/a/665503)
 # Asciinema brain-progression demo
 [![asciicast](https://asciinema.org/a/665488.svg)](https://asciinema.org/a/665488)
 # Asciinema brain-gcd demo
