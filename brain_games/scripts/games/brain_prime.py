@@ -1,4 +1,3 @@
-import prompt
 import random
 
 
@@ -22,17 +21,22 @@ def get_user_answer(name):
 def main():
     print('Welcome to the Brain Games!')
     name = prompt.string('May I have your name? ')
-    print(f'Hello, {name}! Answer "yes" if given number is prime. Otherwise answer "no".')
+    greeting = f'Hello, {name}! Answer "yes" if given number'
+    greeting += ' is prime. Otherwise answer "no".'
+    print(greeting)
 
     for _ in range(3):
         answer, result, random_num = get_user_answer(name)
         if answer == result:
             print('Correct!')
         else:
-            print(f"'{answer}' is wrong answer ;(. Correct answer was '{result}'.\nLet's try again, {name}!")
+            wrong_msg = f"'{answer}' is wrong answer ;(. Correct"
+            wrong_msg += f" answer was '{result}'.\nLet's try again, {name}!"
+            print(wrong_msg)
             break
     else:
         print(f'Congratulations, {name}!')
+
 
 if __name__ == '__main__':
     main()
