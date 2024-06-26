@@ -1,33 +1,39 @@
 import random
-from brain_games.scripts.games.game_engine import run_game
-
-
-GAME_NAME = 'Brain Progression'
-DESCRIPTION = 'What number is missing in the progression?'
-
-
-def generate_progression(start, step, length):
-    return [start + step * i for i in range(length)]
-
-
-def generate_question():
-    progression_length = random.randint(5, 10)
-    progression_start = random.randint(1, 10)
-    progression_step = random.randint(1, 10)
-    progression = generate_progression(progression_start, progression_step, progression_length)
-    hidden_element_index = random.randint(0, progression_length - 1)
-    progression[hidden_element_index] = '..'
-    question = ' '.join(map(str, progression))
-    return question, progression_start, progression_step, hidden_element_index
-
-
-def correct_answer_function(question_data):
-    _, start, step, hidden_element_index = question_data
-    return start + step * hidden_element_index
+import prompt
 
 
 def main():
-    run_game(GAME_NAME, DESCRIPTION, generate_question, correct_answer_function)
+    print('Welcome to the Brain Games!')
+    i = 0
+    name = prompt.string('May I have your name? ')
+    print(f'Hello, {name}!\nWhat number is missing in the progression?.')
+    while i < 3:
+        row_length = random.randint(5, 10)
+        series_num = []
+        start_num = random.randint(1, 100)
+        series_num.append(start_num)
+        interval = random.randint(1, 5)
+        while len(series_num) < row_length:
+            series_num.append(series_num[-1] + interval)
+        index_missing = random.randint(0, len(series_num) - 1)
+        search_num = series_num[index_missing]
+        row_missing_num = series_num
+        row_missing_num[index_missing] = '..'
+        line_row = ' '.join(map(str, series_num))
+        print(f'Question: {line_row}')
+        answer = prompt.string('Your answer: ')
+        if answer == str(search_num):
+            print('Correct!')
+        else:
+            print(
+                f"'{answer}' is wrong answer ;(. Correct "
+                f"answer was '{search_num}'\nLet's try again, {name}!"
+            )
+            break
+        i = i + 1
+    if i == 3:
+        print(f'Congratulations, {name}!')
+
 
 if __name__ == '__main__':
     main()

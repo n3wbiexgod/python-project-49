@@ -1,36 +1,37 @@
 import random
-from brain_games.scripts.games.game_engine import run_game
-
-
-DESCRIPTION = "What is the result of the expression?"
-
-
-def generate_question():
-    operations = ['+', '-', '*']
-    number1 = random.randint(1, 100)
-    number2 = random.randint(1, 100)
-    operation = random.choice(operations)
-    question = f"{number1} {operation} {number2}"
-    return question
-
-
-def correct_answer_function(question):
-    number1, operation, number2 = question.split()
-    number1 = int(number1)
-    number2 = int(number2)
-
-    if operation == '+':
-        return str(number1 + number2)
-    elif operation == '-':
-        return str(number1 - number2)
-    elif operation == '*':
-        return str(number1 * number2)
+import prompt
 
 
 def main():
-    game_name = "Brain Calc Game"
-    game_description = DESCRIPTION
-    run_game(game_name, game_description, generate_question, correct_answer_function)
+    print('Welcome to the Brain Games!')
+    i = 0
+    operations = ['+', '-', '*']
+    name = prompt.string('May I have your name? ')
+    print(f'Hello, {name}!\nWhat is the result of the expression?')
+    while i < 3:
+        op = random.choice(operations)
+        num1 = random.randint(1, 100)
+        num2 = random.randint(1, 100)
+        print(f'Question: {num1} {op} {num2}')
+        answer = prompt.string('Your answer: ')
+        if op == '+':
+            result = num1 + num2
+        elif op == '-':
+            result = num1 - num2
+        else:
+            result = num1 * num2
+        if int(answer) == int(result):
+            print('Correct!')
+        else:
+            print(
+                f"'{answer}' is wrong answer ;(. Correct "
+                f"answer was '{result}'\nLet's try again, {name}!"
+            )
+            break
+        i = i + 1
+    if i == 3:
+        print(f'Congratulations, {name}!')
+
 
 if __name__ == '__main__':
     main()
