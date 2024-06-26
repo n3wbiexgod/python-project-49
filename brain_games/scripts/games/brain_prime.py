@@ -1,3 +1,4 @@
+import prompt
 import random
 
 
