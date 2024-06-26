@@ -2,41 +2,37 @@ import prompt
 import random
 
 
+def is_prime(number):
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
+
+
+def get_user_answer(name):
+    random_num = random.randint(2, 30)
+    print(f'Question: {random_num}')
+    answer = prompt.string('Your answer: ')
+    result = 'yes' if is_prime(random_num) else 'no'
+    return answer, result, random_num
+
+
 def main():
     print('Welcome to the Brain Games!')
-    i = 0
-    result = ''
     name = prompt.string('May I have your name? ')
-    print(
-        f'Hello, {name}!\nAnswer "yes" if given number '
-        'is prime. Otherwise answer "no".'
-    )
-    while i < 3:
-        random_num = random.randint(2, 30)
-        dividers = []
-        index = 1
-        while index <= random_num:
-            if random_num % index == 0:
-                dividers.append(i)
-            index = index + 1
-        if len(dividers) == 2:
-            result = 'yes'
-        else:
-            result = 'no'
-        print(f'Question: {random_num}')
-        answer = prompt.string('Your answer: ')
+    print(f'Hello, {name}! Answer "yes" if given number is prime. Otherwise answer "no".')
+
+    for _ in range(3):
+        answer, result, random_num = get_user_answer(name)
         if answer == result:
             print('Correct!')
         else:
-            print(
-                f"'{answer}' is wrong answer ;(. Correct "
-                f"answer was '{result}'\nLet's try again, {name}!"
-            )
+            print(f"'{answer}' is wrong answer ;(. Correct answer was '{result}'.\nLet's try again, {name}!")
             break
-        i = i + 1
-    if i == 3:
+    else:
         print(f'Congratulations, {name}!')
-
 
 if __name__ == '__main__':
     main()
