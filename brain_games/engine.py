@@ -11,16 +11,16 @@ def greet():
 def logic(game):
     name = greet()
     print(game.DESCRIPTION)
-    COUNTER = 0
+    counter = 0
 
-    while COUNTER < 3:
+    while counter < 3:
         correct_answer, task = game.make_question()
         print(f'Question: {task}')
         user_answer = prompt.string('Your answer: ')
 
         if user_answer == correct_answer:
             print('Correct!')
-            COUNTER += 1
+            counter += 1
 
         else:
             print(f'\'{user_answer}\' is wrong answer ;(. '
