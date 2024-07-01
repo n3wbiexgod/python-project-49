@@ -8,7 +8,7 @@ def greet():
     return name
 
 
-def logic(game):
+def run(game):
     name = greet()
     print(game.DESCRIPTION)
     counter = 0
