@@ -18,3 +18,10 @@ def is_prime(number):
             return False
         i += 2
     return True
+
+
+def make_question():
+    number = randint(1, 100)
+    question = f'Question: {number}'
+    correct_answer = 'yes' if is_prime(number) else 'no'
+    return correct_answer, question
