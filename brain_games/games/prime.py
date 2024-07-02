@@ -6,6 +6,7 @@ DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
 
 def is_prime(number):
+    """Проверяет, является ли число простым."""
     if number == 1:
         return False
     if number == 2:
@@ -21,6 +22,7 @@ def is_prime(number):
 
 
 def make_question():
+    """Генерирует случайное число и задает вопрос, является ли оно простым."""
     number = randint(1, 100)
     question = f'Question: {number}'
     correct_answer = 'yes' if is_prime(number) else 'no'
