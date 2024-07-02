@@ -2,6 +2,7 @@ import prompt
 
 
 def greet():
+    """Приветствует пользователя и запрашивает его имя."""
     print('Welcome to the Brain Games!')
     name = prompt.string('May I have your name? ')
     print(f'Hello, {name}!')
@@ -9,6 +10,7 @@ def greet():
 
 
 def run(game):
+    """Запускает игровой цикл с заданным модулем игры."""
     name = greet()
     print(game.DESCRIPTION)
     counter = 0
@@ -21,7 +23,6 @@ def run(game):
         if user_answer == correct_answer:
             print('Correct!')
             counter += 1
-
         else:
             print(f'\'{user_answer}\' is wrong answer ;(. '
                   f'Correct answer was \'{correct_answer}\'.'
