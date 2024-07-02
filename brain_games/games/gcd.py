@@ -6,6 +6,7 @@ DESCRIPTION = 'Find the greatest common divisor of given numbers.'
 
 
 def make_question():
+    """Генерирует два случайных числа и возвращает их НОД."""
     number_1, number_2 = randint(1, 100), randint(1, 100)
     correct_answer = str(gcd(number_1, number_2))
     task = f'{number_1} {number_2}'
