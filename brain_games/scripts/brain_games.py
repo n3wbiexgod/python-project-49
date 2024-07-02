@@ -3,6 +3,11 @@ from brain_games.cli import welcome_user
 
 
 def main():
+    """
+    Основная функция, запускающая игру.
+    
+    Вызывает функцию приветствия пользователя.
+    """
     welcome_user()
 
 
